@@ -1,24 +1,34 @@
-# BLOOM — corrected website package
+# Bloom
 
-## Replace the files in your GitHub Pages repository
-1. Download this ZIP and extract it.
-2. Open the folder inside the ZIP.
-3. In your existing GitHub repository, open the folder GitHub Pages publishes from (often the repository root).
-4. Upload **all six files** from this folder and choose to replace files with the same names: `index.html`, `manifest.webmanifest`, `sw.js`, `icon.svg`, `icon-192.png`, and `README.md`.
-5. Commit the changes. Wait for the GitHub Pages deployment to finish.
-6. Open the site in Safari and refresh it. If an old home-screen copy remains, remove that old shortcut and add the current site to the Home Screen again.
+A small wellness tracker that runs entirely in the browser. No build step, no backend.
 
-Do not upload the ZIP file itself into the publishing folder. Upload the extracted files.
+- **Today**: a flower whose five petals fill as you reach your goals for fuel, protein, movement, water and plan. Water glass counter and the day's tasks.
+- **Planner**: month calendar and a task list for each day.
+- **Food**: calories, protein, carbs, fat and added sugar, each with a progress bar. Add and delete foods. Edit your daily goals.
+- **Move**: log workouts with minutes and optional calories burned, plus a 7-day chart.
 
-## Included and checked
-- Responsive home dashboard and bottom navigation.
-- Food journal with optional calories, protein, carbs, fat, added sugar, personal food library, history, and best-effort Open Food Facts search.
-- Activity journal, recurring habit check-ins, planner, mood/journal, custom goals and rewards, generated achievement cards.
-- Christmas countdown, the 24 selected festive activities, self-care calendar, wishlist, and gift planning dates. Day 12 includes a reminder to get the gingerbread kit before Day 15.
-- Local IndexedDB storage, JSON export/import (including theme and advent progress), light/dark theme, and installable app shell.
+- **Advent**: two advent calendars (Christmas activities and a self-care walk or run of 1 to 4 miles), a countdown and a wishlist. Doors open on their December date; tick "Open any door early" to preview.
+- **Care**: mood and sleep check-in, habits, gratitude, a breathing exercise and a 7-day mood chart.
 
-## Privacy and limitations
-Entries are stored in this browser on this device. There is no account or cloud sync. Export a backup before clearing browser data or changing devices. Food database search sends the search words to Open Food Facts; manual entry works without internet. Gift plan-ahead dates are displayed inside the app; this package does not send push notifications.
+Your data is saved in your browser (localStorage), so it stays on the device and browser you use. Clearing site data erases it.
 
-## iPhone installation
-Open the published GitHub Pages address in Safari → Share → Add to Home Screen.
+## Put it on GitHub Pages
+
+1. Create a new repository on GitHub.
+2. Upload `index.html`, `style.css`, `app.js`, `christmas.js`, `icon.png` and `README.md` to the repository root.
+3. Go to **Settings → Pages**.
+4. Under **Build and deployment**, choose **Deploy from a branch**, pick `main` and `/ (root)`, then save.
+5. After a minute, your site is live at `https://<your-username>.github.io/<repo-name>/`.
+
+To try it locally, open `index.html` in a browser.
+
+## Ideas for next steps
+
+- Export and import your data as a JSON file
+- Sleep and mood check-ins
+- A weekly summary page
+
+## Add to your Home Screen
+
+- **iPhone (Safari)**: open the site, tap Share, then **Add to Home Screen**.
+- **Android (Chrome)**: open the site, tap the menu, then **Add to Home screen** or **Install app**.

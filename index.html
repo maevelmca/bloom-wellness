@@ -3,229 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#f8f3ef">
-<meta name="description" content="BLOOM — a gentle personal wellness journal.">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="icon-192.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>BLOOM — your little space</title>
-<style>
-:root{--bg:#f8f3ef;--paper:#fffdfb;--ink:#4e4548;--muted:#877b7e;--line:#e9dfdc;--accent:#a9798e;--accent2:#eadde3;--sage:#e7ece3;--sageink:#687661;--gold:#f2eadb;--shadow:0 5px 20px rgba(70,50,55,.06);--radius:20px}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #c8a7b7;outline-offset:2px}
-header{max-width:1100px;margin:auto;padding:24px 20px 8px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:12px}.flower{width:46px;height:46px;border-radius:15px;background:var(--accent2);display:grid;place-items:center;font-size:25px}.brand h1{font:600 24px Georgia,serif;letter-spacing:2px;margin:0}.brand small{display:block;color:var(--muted);font-size:12px;letter-spacing:.3px}
-.header-actions{display:flex;gap:8px;flex-wrap:wrap}.pill,.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 13px;border-radius:999px}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}.btn.soft{background:var(--accent2);border-color:var(--accent2)}
-main{max-width:1100px;margin:auto;padding:12px 20px 110px}
-.hero{background:var(--paper);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:16px}
-.hero h2{font:500 clamp(25px,4vw,34px) Georgia,serif;margin:4px 0}.eyebrow{color:var(--accent);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}.hero p{margin:4px 0;color:var(--muted)}.hero-date{text-align:right;color:var(--muted);font-size:13px}
-.quote{margin-top:14px;padding:18px 20px;background:var(--accent2);border-radius:var(--radius);color:#6e5661}.quote blockquote{margin:0;font:italic 19px Georgia,serif}.quote small{display:block;margin-top:7px;color:#806c76}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:14px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow);min-width:0}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-6{grid-column:span 6}.span-4{grid-column:span 4}
-.card h3{font:600 18px Georgia,serif;margin:0 0 10px}.muted{color:var(--muted)}.small{font-size:12px}.stat{font:500 25px Georgia,serif}.quick{display:flex;flex-wrap:wrap;gap:8px}.quick button{flex:1 1 105px}
-nav{position:fixed;bottom:0;left:0;right:0;z-index:10;background:rgba(255,253,251,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:4px}
-nav button{border:0;background:transparent;color:var(--muted);padding:8px 12px;border-radius:14px;min-width:58px;font-size:11px}nav button span{display:block;font-size:19px}nav button.active{background:var(--accent2);color:#765567;font-weight:700}
-.view{display:none}.view.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:10px 0 14px}.section-head h2{font:500 29px Georgia,serif;margin:0}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{display:flex;flex-direction:column;gap:4px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:var(--muted);font-weight:650}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:white;color:var(--ink);border-radius:12px;padding:10px 11px}.field textarea{min-height:78px;resize:vertical}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.list{display:grid;gap:8px}.entry{border:1px solid var(--line);border-radius:14px;padding:11px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.entry strong{display:block}.entry small{color:var(--muted)}.entry .remove{border:0;background:transparent;color:#9a6b7d;font-size:18px}.empty{padding:20px;text-align:center;color:var(--muted);background:#faf7f5;border-radius:14px}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{background:#f6f2ef;border-radius:10px;text-align:center;padding:8px 2px;font-size:11px}.day b{display:block;font-size:13px}
-.notice{background:var(--sage);color:var(--sageink);padding:11px 13px;border-radius:13px;font-size:13px}
-.toast{position:fixed;top:12px;left:50%;transform:translateX(-50%);background:#4e4548;color:white;padding:10px 16px;border-radius:999px;z-index:30;display:none;max-width:90vw}
-dialog{border:1px solid var(--line);border-radius:20px;max-width:520px;width:calc(100% - 28px);padding:22px;color:var(--ink);background:var(--paper)}dialog::backdrop{background:#31242b66}
-body.dark{--bg:#211f22;--paper:#2d292e;--ink:#f1e9ec;--muted:#b8aab1;--line:#494047;--accent:#bd91a7;--accent2:#483943;--sage:#303c32;--sageink:#c4d4bd;--gold:#474033;--shadow:0 5px 20px #0002}
-body.dark .field input,body.dark .field textarea,body.dark .field select{background:#373138;color:var(--ink);border-color:var(--line)}body.dark nav{background:#2d292ef2}body.dark .day,body.dark .empty{background:#373138}
-@media(max-width:700px){header{padding:16px 14px 6px}main{padding:10px 14px 105px}.hero{padding:18px}.span-8,.span-6,.span-4{grid-column:span 12}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.hero-date{font-size:11px}nav button{padding:7px 8px;min-width:0;flex:1}}
-</style>
+<title>Bloom</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bloom"><meta name="theme-color" content="#FAF7FC"><link rel="apple-touch-icon" href="icon.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <header>
- <div class="brand"><div class="flower" aria-hidden="true">✿</div><div><h1>BLOOM</h1><small>your little space to grow</small></div></div>
- <div class="header-actions"><button class="pill" id="themeBtn" type="button" title="Toggle dark mode">☾ Theme</button><button class="pill" id="exportBtn" type="button">Export</button></div>
+  <h1>Bloom</h1>
+  <nav aria-label="Pages">
+    <a href="#today">Today</a>
+    <a href="#planner">Planner</a>
+    <a href="#food">Food</a>
+    <a href="#move">Move</a>
+  </nav>
 </header>
-<main>
-<section class="view active" id="home">
- <div class="hero"><div><div class="eyebrow">A little space for you</div><h2 id="greeting">Hello, lovely human ♡</h2><p>One day at a time. Your pace is enough.</p></div><div class="hero-date"><div id="clock"></div><div id="today"></div></div></div>
- <div class="quote"><blockquote id="quoteText">“You are allowed to grow at your own pace.”</blockquote><small id="quoteKind">A gentle reminder · <button id="newQuote" class="btn" style="padding:3px 9px;font-size:11px">Another thought</button></small></div>
- <div class="grid">
-  <article class="card span-4"><h3>Today's mood ☁</h3><div id="moodSummary" class="muted">Not checked in yet</div><div class="actions"><button class="btn soft" data-go="journal">Check in</button></div></article>
-  <article class="card span-4"><h3>Habits ✿</h3><div class="stat" id="habitSummary">0 / 0</div><div class="muted small">Check-ins today</div><div class="actions"><button class="btn soft" data-go="habits">View habits</button></div></article>
-  <article class="card span-4"><h3>Movement ♡</h3><div class="stat" id="movementSummary">0</div><div class="muted small">Activities logged today</div><div class="actions"><button class="btn soft" data-go="movement">Add activity</button></div></article>
-  <article class="card span-8"><h3>Today's schedule</h3><div id="schedulePreview" class="list"><div class="empty">No plans yet. Add something in Planner.</div></div><div class="actions"><button class="btn" data-go="planner">Open planner</button></div></article>
-  <article class="card span-4"><h3>Quick add</h3><div class="quick"><button class="btn soft" data-go="nourish">＋ Food</button><button class="btn soft" data-go="nourish">＋ Drink</button><button class="btn soft" data-go="journal">＋ Mood</button><button class="btn soft" data-go="journal">＋ Note</button><button class="btn soft" data-go="movement">＋ Activity</button></div></article>
-  <article class="card span-12"><h3>This week</h3><div class="week" id="weekStrip"></div></article>
- </div>
-</section>
-<section class="view" id="nourish">
- <div class="section-head"><div><div class="eyebrow">Nourish</div><h2>Food journal</h2></div><span class="muted small">Your records, your pace</span></div>
- <div class="notice">Record nutrition information as directed by your healthcare professional. Values are records, not grades or goals.</div>
- <article class="card" style="margin-top:14px"><h3>Today's recorded totals</h3><div id="nutritionSummary" class="stat">0 kcal</div><p id="macroSummary" class="muted small">Protein 0 g · Carbs 0 g · Fat 0 g</p><p id="sugarSummary" class="muted small">Added sugar recorded: 0 g</p><p class="muted small">These totals only add up the optional values you enter. They are not targets or limits.</p></article>
- <div class="grid">
-  <article class="card span-6"><h3>Log a food</h3><form id="foodForm" class="formgrid">
-   <div class="field full"><label for="foodName">Food or meal</label><input id="foodName" required placeholder="e.g. oatmeal with berries"></div>
-   <div class="field"><label for="mealType">Meal</label><select id="mealType"><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snack</option></select></div>
-   <div class="field"><label for="foodDate">Date</label><input id="foodDate" type="date" required></div>
-   <div class="field"><label for="calories">Calories (optional)</label><input id="calories" type="number" min="0" step="any" placeholder="From label/database"></div>
-   <div class="field"><label for="protein">Protein (g)</label><input id="protein" type="number" min="0" step="any"></div>
-   <div class="field"><label for="carbs">Carbohydrates (g)</label><input id="carbs" type="number" min="0" step="any"></div>
-   <div class="field"><label for="fat">Fat (g)</label><input id="fat" type="number" min="0" step="any"></div>
-   <div class="field"><label for="addedSugar">Added sugar (g)</label><input id="addedSugar" type="number" min="0" step="any" placeholder="Optional"></div>
-   <div class="field full"><label for="foodSource">Information source</label><select id="foodSource"><option>Personal entry / label</option><option>Open Food Facts</option><option>Other database</option></select></div>
-   <div class="field full"><label for="foodNotes">Notes (optional)</label><textarea id="foodNotes" placeholder="Serving details or notes"></textarea></div>
-   <div class="field full"><label><input id="saveFoodLibrary" type="checkbox"> Save this food in My Food Library for reuse</label></div>
-   <div class="field full"><button class="btn primary" type="submit">Save food entry</button></div>
-  </form></article>
-  <article class="card span-6"><h3>Find a packaged food</h3><form id="searchFood" class="formgrid"><div class="field full"><label for="foodSearch">Search Open Food Facts (best-effort product lookup)</label><input id="foodSearchInput" placeholder="Product name or brand"></div><div class="field full"><button class="btn" type="submit">Search food database</button></div></form><div id="foodResults" class="list" style="margin-top:10px"><div class="muted small">Internet connection needed. Product coverage and nutrient details vary. Search uses the provider's legacy full-text endpoint and may change.</div></div></article>
-  <article class="card span-6"><h3>My Food Library</h3><div id="foodLibrary" class="list"></div></article>
-  <article class="card span-6"><h3>Food history</h3><div id="foodHistory" class="list"></div></article>
- </div>
-</section>
-<section class="view" id="movement">
- <div class="section-head"><div><div class="eyebrow">Movement</div><h2>Activity journal</h2></div></div>
- <div class="notice">Log soccer, other activities, or rest-day notes. This is a journal, not a performance score.</div>
- <div class="grid">
-  <article class="card span-6"><h3>Add activity</h3><form id="activityForm" class="formgrid">
-   <div class="field full"><label for="activityName">Activity</label><input id="activityName" required placeholder="Soccer practice, walking, cycling…"></div>
-   <div class="field"><label for="activityDate">Date</label><input id="activityDate" type="date" required></div>
-   <div class="field"><label for="activityDuration">Duration (optional, minutes)</label><input id="activityDuration" type="number" min="0" placeholder="e.g. 60"></div>
-   <div class="field"><label for="activityFeeling">How did it feel?</label><select id="activityFeeling"><option>Good</option><option>Enjoyable</option><option>Tiring</option><option>Mixed</option><option>Prefer not to say</option></select></div>
-   <div class="field"><label for="activityType">Type</label><select id="activityType"><option>Soccer</option><option>Walking</option><option>Cycling</option><option>Dance</option><option>Mobility / stretching</option><option>Other</option><option>Rest / recovery note</option></select></div>
-   <div class="field full"><label for="activityNotes">Notes</label><textarea id="activityNotes" placeholder="Practice notes, recovery, what you enjoyed…"></textarea></div>
-   <div class="field full"><button class="btn primary" type="submit">Save activity</button></div>
-  </form></article>
-  <article class="card span-6"><h3>Activity history</h3><div id="activityHistory" class="list"></div></article>
- </div>
-</section>
-<section class="view" id="habits">
- <div class="section-head"><div><div class="eyebrow">Little routines</div><h2>Habits & check-ins</h2></div></div>
- <div class="grid">
-  <article class="card span-6"><h3>Create a habit</h3><form id="habitForm" class="formgrid"><div class="field full"><label for="habitName">Habit name</label><input id="habitName" required placeholder="Read, brush teeth, pack soccer bag…"></div><div class="field full"><button class="btn primary">Add habit</button></div></form><p class="muted small">Habits stay on your list each day. Check them off whenever they fit; no streaks or pressure.</p></article>
-  <article class="card span-6"><h3>Today's check-ins</h3><div id="habitList" class="list"></div></article>
- </div>
-</section>
-<section class="view" id="planner">
- <div class="section-head"><div><div class="eyebrow">Make room for your day</div><h2>Planner</h2></div></div>
- <div class="grid">
-  <article class="card span-6"><h3>Add a plan or task</h3><form id="planForm" class="formgrid"><div class="field full"><label for="planTitle">What is it?</label><input id="planTitle" required placeholder="School, soccer, assignment…"></div><div class="field"><label for="planDate">Date</label><input id="planDate" type="date" required></div><div class="field"><label for="planTime">Time (optional)</label><input id="planTime" type="time"></div><div class="field"><label for="planKind">Type</label><select id="planKind"><option>Personal</option><option>School</option><option>Soccer</option><option>Appointment</option><option>Reminder</option></select></div><div class="field full"><label for="planNotes">Notes</label><textarea id="planNotes"></textarea></div><div class="field full"><button class="btn primary">Save to planner</button></div></form></article>
-  <article class="card span-6"><h3>Upcoming plans</h3><div id="planHistory" class="list"></div></article>
- </div>
-</section>
-<section class="view" id="journal">
- <div class="section-head"><div><div class="eyebrow">A page for you</div><h2>Journal & mood</h2></div></div>
- <div class="grid">
-  <article class="card span-6"><h3>Daily check-in</h3><form id="journalForm" class="formgrid"><div class="field"><label for="journalDate">Date</label><input id="journalDate" type="date" required></div><div class="field"><label for="journalMood">Mood</label><select id="journalMood"><option>Calm</option><option>Happy</option><option>Excited</option><option>Okay</option><option>Stressed</option><option>Sad</option><option>Tired</option><option>Mixed</option><option>Prefer not to say</option></select></div><div class="field full"><label for="journalEnergy">Energy / how today felt</label><select id="journalEnergy"><option>Steady</option><option>Full of energy</option><option>Low energy</option><option>Up and down</option><option>Not sure</option></select></div><div class="field full"><label for="journalText">Your thoughts</label><textarea id="journalText" placeholder="Anything you'd like to remember…"></textarea></div><div class="field full"><button class="btn primary">Save journal entry</button></div></form></article>
-  <article class="card span-6"><h3>Past entries</h3><div id="journalHistory" class="list"></div></article>
- </div>
-</section>
-
-<section class="view" id="goals">
- <div class="section-head"><div><div class="eyebrow">Your progress, your way</div><h2>Goals & rewards ✨</h2></div></div>
- <div class="notice">Create goals that matter to you. Rewards are personal celebrations, not pressure or a measure of your worth.</div>
- <div class="grid">
-  <article class="card span-6"><h3>Create a goal</h3><form id="goalForm" class="formgrid"><div class="field full"><label for="goalTitle">Goal</label><input id="goalTitle" required placeholder="e.g. Finish my history project"></div><div class="field"><label for="goalCategory">Category</label><select id="goalCategory"><option>School</option><option>Creativity</option><option>Reading</option><option>Habits</option><option>Personal</option><option>Other</option></select></div><div class="field"><label for="goalRewardIcon">Reward icon</label><select id="goalRewardIcon"><option>🎁</option><option>☕</option><option>📚</option><option>🎨</option><option>🎬</option><option>🌷</option><option>⭐</option><option>🍰</option></select></div><div class="field full"><label for="goalReward">Your custom reward</label><input id="goalReward" placeholder="e.g. Pick a movie night snack"></div><div class="field full"><button class="btn primary">Save goal</button></div></form></article>
-  <article class="card span-6"><h3>My goals</h3><div id="goalList" class="list"></div></article>
-  <article class="card span-12"><h3>Achievement cabinet 🏆</h3><p class="muted small">BLOOM automatically celebrates milestones from goals you complete. Each completed goal earns a generated achievement and reward idea; you can also create your own custom rewards above.</p><div id="achievementList" class="list"></div></article>
- </div>
-</section>
-<section class="view" id="christmas">
- <div class="section-head"><div><div class="eyebrow">December magic</div><h2>Christmas corner 🎄</h2></div></div>
- <div class="hero"><div><div class="eyebrow">The countdown</div><h2 id="christmasCountdown">A little Christmas magic</h2><p>Your festive plans, keepsakes and advent calendars.</p></div></div>
- <div class="grid">
-  <article class="card span-12"><h3>Christmas fun advent calendar</h3><p class="muted small">Your 24 planned activities. Day 20 is a pick-one day; reminders for advance purchases are shown in the calendar.</p><div id="christmasCalendar" class="advent-grid"></div></article>
-  <article class="card span-12"><h3>Self-care advent calendar</h3><p class="muted small">Gentle daily ideas. Movement prompts are optional; walking, comfortable running, another activity or rest are all valid choices. No distance targets.</p><div id="selfCareCalendar" class="advent-grid"></div></article>
-  <article class="card span-6"><h3>Christmas wishlist</h3><form id="wishForm" class="formgrid"><div class="field full"><label for="wishText">Add to wishlist</label><input id="wishText" required placeholder="Something you're wishing for"></div><div class="field full"><button class="btn">Add wish</button></div></form><div id="wishList" class="list"></div></article>
-  <article class="card span-6"><h3>Gift planner & plan-ahead dates</h3><form id="giftForm" class="formgrid"><div class="field full"><label for="giftWho">Gift / person</label><input id="giftWho" required placeholder="Gift idea or recipient"></div><div class="field"><label for="giftDate">Need by</label><input id="giftDate" type="date"></div><div class="field full"><button class="btn">Add gift reminder</button></div></form><div id="giftList" class="list"></div></article>
- </div>
-</section>
-<style>
-.advent-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.advent-door{border:1px solid var(--line);border-radius:14px;background:#faf6f4;padding:12px 8px;min-height:94px;text-align:left;color:var(--ink)}.advent-door b{display:block;font:600 20px Georgia,serif;color:var(--accent)}.advent-door small{display:block;color:var(--muted);font-size:11px;margin-top:5px}.advent-door.done{background:var(--sage);border-color:#cbd8c5}.advent-detail{margin-top:10px;padding:12px;border-radius:13px;background:var(--accent2)}body.dark .advent-door{background:#373138;color:var(--ink)}@media(max-width:700px){.advent-grid{grid-template-columns:repeat(3,minmax(0,1fr))}nav{overflow-x:auto;justify-content:flex-start}nav button{flex:0 0 auto}}
-</style>
-
-<section class="view" id="settings">
- <div class="section-head"><div><div class="eyebrow">Your BLOOM</div><h2>Settings & data</h2></div></div>
- <div class="grid">
-  <article class="card span-6"><h3>Appearance</h3><p class="muted small">Choose a calm, solid-color theme. No gradients or ombré.</p><div class="actions"><button class="btn" data-theme="light">Soft cream</button><button class="btn" data-theme="dark">Dark mode</button></div></article>
-  <article class="card span-6"><h3>Your data</h3><p class="muted small">This first draft saves information in this browser on this device. Clearing browser data may erase it. Export a backup regularly.</p><div class="actions"><button class="btn primary" id="exportBtn2">Export backup</button><label class="btn" for="importFile">Import backup</label><input id="importFile" type="file" accept="application/json" hidden></div><button class="btn" id="clearBtn" style="margin-top:12px">Delete all local data</button></article>
-  <article class="card span-12"><h3>What this draft includes</h3><p>Working local food logs (including calories and macros), Open Food Facts product search, movement logs, habits, planner entries, mood/journal entries, theme toggle, export/import, and responsive bottom navigation.</p><p class="muted small">Not included yet: barcode scanning, recipe nutrition calculator, photo journal, automatic reminders/push notifications, secure app lock, multi-device sync, live weather, and a full food database with guaranteed coverage. Those require additional integrations and testing.</p></article>
- </div>
-</section>
-</main>
-<nav aria-label="Main navigation">
- <button type="button" class="active" data-tab="home"><span>⌂</span>Home</button><button type="button" data-tab="nourish"><span>♡</span>Nourish</button><button type="button" data-tab="movement"><span>⚽</span>Move</button><button type="button" data-tab="habits"><span>✿</span>Habits</button><button type="button" data-tab="planner"><span>▦</span>Planner</button><button type="button" data-tab="journal"><span>✎</span>Journal</button><button type="button" data-tab="goals"><span>☆</span>Goals</button><button type="button" data-tab="christmas"><span>🎄</span>Christmas</button><button type="button" data-tab="settings"><span>☼</span>More</button>
-</nav>
-<dialog id="confirmDialog"><h3>Delete all BLOOM data?</h3><p>This permanently removes the information saved by this draft in this browser. Export a backup first if you want to keep it.</p><div class="actions"><button class="btn" id="cancelDelete">Cancel</button><button class="btn primary" id="confirmDelete">Delete everything</button></div></dialog>
-<script>
-const DB_NAME='bloom-local-v1', STORE='records';
-let db;
-const todayISO=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
-const $=id=>document.getElementById(id);
-function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.style.display='none',2600)}
-function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const d=req.result;if(!d.objectStoreNames.contains(STORE))d.createObjectStore(STORE,{keyPath:'id',autoIncrement:true})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
-function all(){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly'),r=tx.objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
-function add(item){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite'),r=tx.objectStore(STORE).add({...item,createdAt:new Date().toISOString()});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
-function put(item){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite'),r=tx.objectStore(STORE).put(item);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
-function del(id){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite'),r=tx.objectStore(STORE).delete(Number(id));r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
-function replaceAll(items){return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite'),s=tx.objectStore(STORE);s.clear();items.forEach(x=>{const y={...x};delete y.id;s.add(y)});tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
-const val=id=>$(id).value.trim();
-function entryHTML(x,details=''){return `<div class="entry"><div><strong>${escapeHTML(x.title||x.name||'Entry')}</strong><small>${escapeHTML(details||x.date||'')}</small></div><button class="remove" data-delete="${x.id}" aria-label="Delete entry">×</button></div>`}
-function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function render(){
- const a=await all(),by=t=>a.filter(x=>x.type===t).sort((x,y)=>(y.date||'').localeCompare(x.date||'')||(y.createdAt||'').localeCompare(x.createdAt||''));
- const foods=by('food'),savedFoods=by('savedfood'),acts=by('activity'),habits=by('habit'),plans=by('plan'),journals=by('journal');
- const today=todayISO();
- const todaysFoods=foods.filter(x=>x.date===today);$('nutritionSummary').textContent=`${todaysFoods.reduce((sum,x)=>sum+(Number(x.calories)||0),0)} kcal recorded`; $('macroSummary').textContent=`Protein ${todaysFoods.reduce((sum,x)=>sum+(Number(x.protein)||0),0)} g · Carbs ${todaysFoods.reduce((sum,x)=>sum+(Number(x.carbs)||0),0)} g · Fat ${todaysFoods.reduce((sum,x)=>sum+(Number(x.fat)||0),0)} g`; $('sugarSummary').textContent=`Added sugar recorded: ${todaysFoods.reduce((sum,x)=>sum+(Number(x.addedSugar)||0),0)} g`;
- $('foodHistory').innerHTML=foods.length?foods.map(x=>entryHTML(x,`${x.meal} · ${x.date} · ${x.calories||'—'} kcal · Added sugar ${x.addedSugar||'—'}g · P ${x.protein||'—'}g / C ${x.carbs||'—'}g / F ${x.fat||'—'}g`)).join(''):'<div class="empty">Your food entries will appear here.</div>';
- $('foodLibrary').innerHTML=savedFoods.length?savedFoods.map(x=>`<div class="entry"><div><strong>${escapeHTML(x.title)}</strong><small>${x.calories||'—'} kcal · Added sugar ${x.addedSugar||'—'}g · P ${x.protein||'—'}g / C ${x.carbs||'—'}g / F ${x.fat||'—'}g</small><br><button class="btn soft" data-use-food="${x.id}">Use in food log</button></div><button class="remove" data-delete="${x.id}" aria-label="Delete saved food">×</button></div>`).join(''):'<div class="empty">Save a food from the form to build your personal library.</div>';
- $('activityHistory').innerHTML=acts.length?acts.map(x=>entryHTML(x,`${x.date} · ${x.kind} · ${x.duration?x.duration+' min · ':''}${x.feeling||''}`)).join(''):'<div class="empty">No activities logged yet.</div>';
- $('habitList').innerHTML=habits.length?habits.map(x=>{const completed=(x.completedDates||[]).includes(today)||(x.date===today&&x.done);return `<div class="entry"><label><input type="checkbox" data-habit="${x.id}" ${completed?'checked':''}> ${escapeHTML(x.title)} <small>Daily check-in</small></label><button class="remove" data-delete="${x.id}" aria-label="Delete habit">×</button></div>`}).join(''):'<div class="empty">Add your first habit above.</div>';
- $('planHistory').innerHTML=plans.length?plans.map(x=>entryHTML(x,`${x.date}${x.time?' · '+x.time:''} · ${x.kind}`)).join(''):'<div class="empty">Nothing planned yet.</div>';
- $('journalHistory').innerHTML=journals.length?journals.map(x=>entryHTML(x,`${x.date} · ${x.mood} · ${x.energy}`)).join(''):'<div class="empty">Your journal entries will appear here.</div>';
- $('moodSummary').textContent=journals.find(x=>x.date===today)?.mood||'Not checked in yet';
- $('habitSummary').textContent=`${habits.filter(x=>(x.completedDates||[]).includes(today)||(x.date===today&&x.done)).length} / ${habits.length}`;
- $('movementSummary').textContent=acts.filter(x=>x.date===today).length;
- const upcoming=plans.filter(x=>x.date===today).sort((x,y)=>(x.time||'').localeCompare(y.time||'')).slice(0,4);
- $('schedulePreview').innerHTML=upcoming.length?upcoming.map(x=>`<div class="entry"><div><strong>${escapeHTML(x.title)}</strong><small>${x.time?escapeHTML(x.time)+' · ':''}${escapeHTML(x.kind)}</small></div></div>`).join(''):'<div class="empty">No plans for today. Add something in Planner.</div>';
-}
-function setTab(tab){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===tab));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.go)));
-document.addEventListener('click',async e=>{const use=e.target.closest('[data-use-food]');if(use){const item=(await all()).find(x=>x.id===Number(use.dataset.useFood));if(item){$('foodName').value=item.title;$('calories').value=item.calories||'';$('protein').value=item.protein||'';$('carbs').value=item.carbs||'';$('fat').value=item.fat||'';$('addedSugar').value=item.addedSugar||'';$('foodSource').value=item.source||'Personal entry / label';setTab('nourish');$('foodName').focus();toast('Saved food copied into the entry form.')}}const b=e.target.closest('[data-delete]');if(b){await del(b.dataset.delete);await render();if($('goalList'))await customRender();toast('Entry deleted.')}});
-$('habitList').addEventListener('change',async e=>{if(e.target.matches('[data-habit]')){const id=Number(e.target.dataset.habit),items=await all(),h=items.find(x=>x.id===id);if(h){h.completedDates=Array.isArray(h.completedDates)?h.completedDates:[];const d=todayISO();h.completedDates=e.target.checked?[...new Set([...h.completedDates,d])]:h.completedDates.filter(x=>x!==d);delete h.done;await put(h);await render()}}});
-$('foodForm').addEventListener('submit',async e=>{e.preventDefault();const item={title:val('foodName'),calories:val('calories'),protein:val('protein'),carbs:val('carbs'),fat:val('fat'),addedSugar:val('addedSugar'),source:val('foodSource'),notes:val('foodNotes')};await add({type:'food',...item,meal:val('mealType'),date:val('foodDate')});if($('saveFoodLibrary').checked)await add({type:'savedfood',...item});e.target.reset();$('foodDate').value=todayISO();await render();toast('Food entry saved on this device.')});
-$('activityForm').addEventListener('submit',async e=>{e.preventDefault();await add({type:'activity',title:val('activityName'),date:val('activityDate'),duration:val('activityDuration'),feeling:val('activityFeeling'),kind:val('activityType'),notes:val('activityNotes')});e.target.reset();$('activityDate').value=todayISO();await render();toast('Activity saved.')});
-$('habitForm').addEventListener('submit',async e=>{e.preventDefault();await add({type:'habit',title:val('habitName'),date:todayISO(),done:false});e.target.reset();await render();toast('Habit added.')});
-$('planForm').addEventListener('submit',async e=>{e.preventDefault();await add({type:'plan',title:val('planTitle'),date:val('planDate'),time:val('planTime'),kind:val('planKind'),notes:val('planNotes')});e.target.reset();$('planDate').value=todayISO();await render();toast('Plan saved.')});
-$('journalForm').addEventListener('submit',async e=>{e.preventDefault();await add({type:'journal',date:val('journalDate'),mood:val('journalMood'),energy:val('journalEnergy'),title:val('journalText')||'Journal check-in',notes:val('journalText')});e.target.reset();$('journalDate').value=todayISO();await render();toast('Journal entry saved.')});
-$('searchFood').addEventListener('submit',async e=>{e.preventDefault();const q=val('foodSearchInput');if(!q)return;const out=$('foodResults');out.innerHTML='<div class="muted">Searching Open Food Facts…</div>';try{const url='https://world.openfoodfacts.org/cgi/search.pl?search_terms='+encodeURIComponent(q)+'&search_simple=1&action=process&json=1&page_size=8';const res=await fetch(url,{headers:{Accept:'application/json'}});if(!res.ok)throw new Error('Search unavailable');const data=await res.json();const products=(data.products||[]).filter(p=>p.product_name);out.innerHTML=products.length?products.map((p,i)=>{const n=p.nutriments||{};const kcal=n['energy-kcal_100g']??(n['energy-kj_100g']?Math.round(n['energy-kj_100g']/4.184):'');return `<div class="entry"><div><strong>${escapeHTML(p.product_name)}</strong><small>${escapeHTML(p.brands||'Brand not listed')} · per 100g · ${kcal!==''?escapeHTML(kcal)+' kcal':'calories unavailable'} · ${n.proteins_100g??'—'}g protein · ${n.carbohydrates_100g??'—'}g carbs · ${n.fat_100g??'—'}g fat</small></div><button class="btn soft" data-pick="${i}">Use</button></div>`}).join(''):'<div class="empty">No matching products found. Try another search or enter it manually.</div>';out._products=products}catch(err){out.innerHTML='<div class="empty">Could not reach the food database. Check your connection, or enter the food manually.</div>'}});
-$('foodResults').addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(!b)return;const p=$('foodResults')._products?.[Number(b.dataset.pick)];if(!p)return;const n=p.nutriments||{};$('foodName').value=p.product_name||'';$('calories').value=n['energy-kcal_100g']??(n['energy-kj_100g']?Math.round(n['energy-kj_100g']/4.184):'');$('protein').value=n.proteins_100g??'';$('carbs').value=n.carbohydrates_100g??'';$('fat').value=n.fat_100g??'';$('foodSource').value='Open Food Facts';$('foodNotes').value='Database values are per 100g. Adjust using the package serving information.';toast('Product details copied into the food form. Review before saving.')});
-
-const christmasDays=[
-'Christmas movie night','Paper snowflake crafts','Christmas wishlist','Pet paw-print clay ornament','Wrap gifts','Festive hot chocolate','Paint the windows','Make a Christmas garland','Blind Date With a Book','Christmas mystery film','Get a Christmas Starbucks drink','Choose: Christmas sleepover, Christmas market or Christmas cookies — and pick up the gingerbread-house kit for Day 15','Christmas everything shower','Christmas carols','Gingerbread house decorating','Christmas baked good','Blind Date With a Book — round 2','Christmas movie roulette','Hot chocolate bar','Choose: Christmas sleepover, Christmas market or Christmas cookies','Christmas movie night','Make paper Christmas stars','Christmas gift wrapping night','Read The Night Before Christmas and watch a Christmas movie'];
-const selfCareDays=['Gentle morning reset','Optional enjoyable movement or rest','Try a calming playlist','Optional enjoyable movement or rest','Write down something you enjoyed','Optional enjoyable movement or rest','Take a screen break','Optional enjoyable movement or rest','Have a cosy reading moment','Optional enjoyable movement or rest','Do a small creative activity','Optional enjoyable movement or rest','Take time outside if you feel like it','Optional enjoyable movement or rest','Have a relaxing shower','Optional enjoyable movement or rest','Make a comfort playlist','Optional enjoyable movement or rest','Tidy one small cosy corner','Optional enjoyable movement or rest','Write a kind note to yourself','Optional enjoyable movement or rest','Choose a favourite relaxing activity','Rest and reflect'];
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-async function customRender(){const items=await all();const goals=items.filter(x=>x.type==='goal'),ach=items.filter(x=>x.type==='achievement');
- $('goalList').innerHTML=goals.length?goals.map(g=>`<div class="entry"><div><strong>${esc(g.title)}</strong><small>${esc(g.category)} · Reward: ${esc(g.rewardIcon)} ${esc(g.reward||'Choose your own celebration')}</small></div>${g.completedAt?`<span class="muted small">Completed ${esc(g.completedAt)}</span>`:`<button class="btn soft" data-complete-goal="${g.id}">Complete</button>`}<button class="remove" data-delete="${g.id}">×</button></div>`).join(''):'<div class="empty">Your goals will appear here.</div>';
- $('achievementList').innerHTML=ach.length?ach.map(a=>`<div class="entry"><div><strong>${esc(a.icon)} ${esc(a.title)}</strong><small>${esc(a.description)} · Earned ${esc(a.date)}</small><p class="muted small">Reward: ${esc(a.reward)}</p></div></div>`).join(''):'<div class="empty">Your achievements will appear here as you complete goals.</div>';
- const wishes=items.filter(x=>x.type==='wish');$('wishList').innerHTML=wishes.length?wishes.map(w=>`<div class="entry"><strong>${esc(w.title)}</strong><button class="remove" data-delete="${w.id}">×</button></div>`).join(''):'<div class="empty">Your wishlist is waiting.</div>';
- const gifts=items.filter(x=>x.type==='gift');$('giftList').innerHTML=gifts.length?gifts.map(g=>`<div class="entry"><div><strong>${esc(g.title)}</strong><small>${g.date?'Need by '+esc(g.date):'Date not set'}${g.date?` · Plan-ahead date: ${esc(new Date(new Date(g.date+'T12:00:00').getTime()-3*86400000).toLocaleDateString())}`:''}</small></div><button class="remove" data-delete="${g.id}">×</button></div>`).join(''):'<div class="empty">Add gifts that need advance planning.</div>';
- renderDoors('christmasCalendar',christmasDays,'festive');renderDoors('selfCareCalendar',selfCareDays,'selfcare');
- const now=new Date(),xmas=new Date(now.getFullYear(),11,25);if(now>xmas)xmas.setFullYear(xmas.getFullYear()+1);const n=Math.ceil((xmas-now)/86400000);$('christmasCountdown').textContent=n===0?'Merry Christmas!':`${n} day${n===1?'':'s'} until Christmas`;
-}
-function renderDoors(id,days,key){const el=$(id);if(!el)return;const done=JSON.parse(localStorage.getItem('bloom-'+key+'-done')||'[]');el.innerHTML=days.map((d,i)=>`<button class="advent-door ${done.includes(i+1)?'done':''}" data-door="${key}" data-day="${i+1}"><b>${i+1}</b><small>${esc(d)}</small></button>`).join('');}
-document.addEventListener('click',async e=>{const c=e.target.closest('[data-complete-goal]');if(c){const id=Number(c.dataset.completeGoal),items=await all(),g=items.find(x=>x.id===id);if(g&&!g.completedAt){g.completedAt=todayISO();await put(g);await add({type:'achievement',title:['Bright Idea','Goal Getter','Little by Little','Proud Moment'][Math.floor(Math.random()*4)],icon:['🏆','⭐','🌷','✨'][Math.floor(Math.random()*4)],description:`Completed: ${g.title}`,reward:g.reward?`${g.rewardIcon||'🎁'} ${g.reward}`:'Choose a little celebration for yourself',date:todayISO()});await customRender();toast('Achievement unlocked!');}}const door=e.target.closest('[data-door]');if(door){const key=door.dataset.door,day=Number(door.dataset.day),list=key==='festive'?christmasDays:selfCareDays;const done=JSON.parse(localStorage.getItem('bloom-'+key+'-done')||'[]');if(!done.includes(day))done.push(day);localStorage.setItem('bloom-'+key+'-done',JSON.stringify(done));renderDoors(key==='festive'?'christmasCalendar':'selfCareCalendar',list,key);toast(`Day ${day}: ${list[day-1]}`);}});
-$('goalForm').addEventListener('submit',async e=>{e.preventDefault();await add({type:'goal',title:val('goalTitle'),category:val('goalCategory'),reward:val('goalReward'),rewardIcon:val('goalRewardIcon')});e.target.reset();await customRender();toast('Goal saved.')});
-$('wishForm').addEventListener('submit',async e=>{e.preventDefault();await add({type:'wish',title:val('wishText')});e.target.reset();await customRender();toast('Added to wishlist.')});
-$('giftForm').addEventListener('submit',async e=>{e.preventDefault();await add({type:'gift',title:val('giftWho'),date:val('giftDate')});e.target.reset();await customRender();toast('Gift reminder saved.')});
-
-function exportData(){all().then(items=>{const blob=new Blob([JSON.stringify({app:'BLOOM',version:2,exportedAt:new Date().toISOString(),items,theme:localStorage.getItem('bloom-theme')||'light',advent:{festive:JSON.parse(localStorage.getItem('bloom-festive-done')||'[]'),selfcare:JSON.parse(localStorage.getItem('bloom-selfcare-done')||'[]')}},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bloom-backup-'+todayISO()+'.json';a.click();URL.revokeObjectURL(a.href);toast('Backup exported.')})}
-$('exportBtn').addEventListener('click',exportData);$('exportBtn2').addEventListener('click',exportData);
-$('importFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(data.app!=='BLOOM'||!Array.isArray(data.items))throw new Error();if(!confirm('Replace current local BLOOM entries with this backup?'))return;await replaceAll(data.items);if(data.theme)setTheme(data.theme);if(data.advent){localStorage.setItem('bloom-festive-done',JSON.stringify(data.advent.festive||[]));localStorage.setItem('bloom-selfcare-done',JSON.stringify(data.advent.selfcare||[]));}await render();await customRender();toast('Backup imported.')}catch(err){toast('That file does not look like a BLOOM backup.')}e.target.value=''});
-$('clearBtn').addEventListener('click',()=>$('confirmDialog').showModal());$('cancelDelete').addEventListener('click',()=>$('confirmDialog').close());$('confirmDelete').addEventListener('click',async()=>{await replaceAll([]);localStorage.removeItem('bloom-festive-done');localStorage.removeItem('bloom-selfcare-done');$('confirmDialog').close();await render();await customRender();toast('Local data deleted.')});
-function setTheme(t){document.body.classList.toggle('dark',t==='dark');localStorage.setItem('bloom-theme',t)}
-$('themeBtn').addEventListener('click',()=>setTheme(document.body.classList.contains('dark')?'light':'dark'));document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.theme)));
-const quotes=['You are allowed to grow at your own pace.','Small moments can make a meaningful day.','You deserve care on ordinary days, too.','You do not have to do everything at once.','There is room to begin again.','Your worth is not a to-do list.'];$('newQuote').addEventListener('click',()=>{$('quoteText').textContent='“'+quotes[Math.floor(Math.random()*quotes.length)]+'”'});
-function updateClock(){const d=new Date();$('clock').textContent=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'});$('today').textContent=d.toLocaleDateString([], {weekday:'long',month:'long',day:'numeric'});$('greeting').textContent=(d.getHours()<12?'Good morning':d.getHours()<17?'Good afternoon':'Good evening')+' ♡'}
-function renderWeek(){const d=new Date(),day=d.getDay(),mon=new Date(d);mon.setDate(d.getDate()-(day===0?6:day-1));$('weekStrip').innerHTML=Array.from({length:7},(_,i)=>{const x=new Date(mon);x.setDate(mon.getDate()+i);return `<div class="day"><span>${x.toLocaleDateString([],{weekday:'short'})}</span><b>${x.getDate()}</b></div>`}).join('')}
-async function init(){try{db=await openDB()}catch(e){document.body.innerHTML='<main><h2>Storage unavailable</h2><p>Please open BLOOM in a modern browser with local storage enabled.</p></main>';return}const dateIds=['foodDate','activityDate','planDate','journalDate'];dateIds.forEach(id=>$(id).value=todayISO());setTheme(localStorage.getItem('bloom-theme')||'light');updateClock();setInterval(updateClock,30000);renderWeek();await render();await customRender();if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{})}
-init();
-</script>
+<main id="app"></main>
+<script src="app.js"></script>
+<script src="christmas.js"></script>
 </body>
 </html>
