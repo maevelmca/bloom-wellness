@@ -1,22 +1,19 @@
-# BLOOM — expanded website
+# BLOOM — complete update
 
 ## Publish to your existing GitHub Pages site
 1. Download and unzip this folder.
-2. Open your existing BLOOM GitHub repository.
-3. Upload/replace `index.html`, `manifest.webmanifest`, `sw.js`, `icon.svg`, and `README.md` in the publishing folder (usually repository root).
-4. Commit the changes. GitHub Pages republishes automatically after the commit.
+2. Upload/replace `index.html`, `manifest.webmanifest`, `sw.js`, `icon.svg`, and `README.md` in your existing repository publishing folder (usually root).
+3. Commit the changes. GitHub Pages republishes automatically.
 
 ## Included
-Home dashboard and mood check-in; food journal with optional nutrition details and visual macro rings; optional Open Food Facts lookup; movement journal; custom habits; Day/Week/Month/Year planner; journal; self-care corner; insights; light/dark mode; JSON backup import/export; local-data clearing; responsive design and PWA install support.
-
-## Food lookup
-The optional Open Food Facts search requires internet and may fail or lack a matching item. Manual logging always works. Nutrition details may be incomplete and database values are commonly per 100g, so verify against the product label. Macro rings summarize only values you enter; they are not targets, limits, or recommendations.
+- Home dashboard, mood journal, food journal, movement journal, habits, planner, light/dark theme.
+- Food entries include calories, macros and added sugar. Nutrition fields are optional records, not targets or recommendations.
+- Custom goals with personal rewards; generated achievement cards when goals are marked complete.
+- Christmas corner with all 24 selected festive activities, self-care calendar, wishlist, gift planner and advance reminder dates.
+- Device-local IndexedDB records, JSON export/import, responsive layout and PWA shell.
 
 ## Privacy
-Entries are stored locally in this browser on this device. No account or cloud sync. Export a backup before clearing browser data or switching devices. Browser storage may be erased if site data is cleared.
+Entries are stored in this browser on this device. There is no account or cloud sync. Export backups before clearing browser data or changing devices. The optional Open Food Facts lookup sends the search words to that service; manual food entry works without it.
 
-## Add to Home Screen
-iPhone: open in Safari → Share → Add to Home Screen.
-Android: open in Chrome → menu → Install app / Add to Home screen.
-
-BLOOM is a personal organizer and reflection journal, not medical advice. Food and movement logging are optional; skip anything that does not feel helpful.
+## iPhone installation
+Open the published GitHub Pages address in Safari → Share → Add to Home Screen.
