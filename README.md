@@ -9,13 +9,15 @@ A small wellness tracker that runs entirely in the browser. No build step, no ba
 
 - **Advent**: two advent calendars (Christmas activities and a self-care walk or run of 1 to 4 miles), a countdown and a wishlist. Doors open on their December date; tick "Open any door early" to preview.
 - **Care**: mood and sleep check-in, habits, gratitude, a breathing exercise and a 7-day mood chart.
+- **Goals**: your own goals with custom rewards (and optional reward links), 14 achievements, a weekly summary, theme switch, and copy/paste backup and restore.
+- Also: saved foods, meal plan, journal prompts, streaks, gift tracker, card list, countdowns and a pick-for-me button.
 
 Your data is saved in your browser (localStorage), so it stays on the device and browser you use. Clearing site data erases it.
 
 ## Put it on GitHub Pages
 
 1. Create a new repository on GitHub.
-2. Upload `index.html`, `style.css`, `app.js`, `christmas.js`, `icon.png` and `README.md` to the repository root.
+2. Upload `index.html`, `style.css`, `app.js`, `christmas.js`, `more.js`, `icon.png` and `README.md` to the repository root.
 3. Go to **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**, pick `main` and `/ (root)`, then save.
 5. After a minute, your site is live at `https://<your-username>.github.io/<repo-name>/`.
